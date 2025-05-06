@@ -69,7 +69,20 @@ function custom_redirect_urls() {
 }
 add_action('template_redirect', 'custom_redirect_urls');
 
+// css and js file enqueue start 6 may 
  
+function child_theme_enqueue_styles_scripts() {
+//   
+  if(is_page('products')){
+//     wp_enqueue_script('parent-custom-js', get_template_directory_uri() . '/js/product.js', [], null, true); 
+	wp_enqueue_style('parent-style', get_stylesheet_directory_uri() . '/css/product-listing.css');
+	     
+	 }
+}
+add_action('wp_enqueue_scripts', 'child_theme_enqueue_styles_scripts');
+
+ 
+//   css and js file enqueue end 6 may 
 function custom_js_script() {
     ?>
     <script>
@@ -116,3 +129,169 @@ function custom_js_script() {
     <?php
 }
 add_action('wp_footer', 'custom_js_script');
+
+
+//May 1
+// Product cpt
+
+
+
+// custom cpt- webninjaz_product1
+
+function create_webninjaz_product_cpt() {
+
+    $labels = array(
+
+        'name' => _x( 'Webninjaz Products', 'webninjaz_product' ),
+
+        'singular_name' => _x( 'Webninjaz Product', 'webninjaz_product' ),
+
+        'add_new' => _x( 'Add New', 'webninjaz_product' ),
+
+        'add_new_item' => _x( 'Add New Webninjaz Product', 'webninjaz_product' ),
+
+        'edit_item' => _x( 'Edit Webninjaz Product', 'webninjaz_product' ),
+
+        'new_item' => _x( 'New Webninjaz Product', 'webninjaz_product' ),
+
+        'view_item' => _x( 'View Webninjaz Product', 'webninjaz_product' ),
+
+        'search_items' => _x( 'Search Webninjaz Products', 'webninjaz_product' ),
+
+        'not_found' => _x( 'No webninjaz products found', 'webninjaz_product' ),
+
+        'not_found_in_trash' => _x( 'No webninjaz products found in Trash', 'webninjaz_product' ),
+
+        'parent_item_colon' => _x( 'Parent Webninjaz Product:', 'webninjaz_product' ),
+
+        'menu_name' => _x( 'Webninjaz Products', 'webninjaz_product' ),
+
+    );
+
+
+
+    $args = array(
+
+        'labels' => $labels,
+
+        'hierarchical' => false,
+
+        'supports' => array( 'title', 'editor','thumbnail'),
+
+        'public' => true,
+
+        'show_ui' => true,
+
+        'show_in_menu' => true,
+
+        'show_in_nav_menus' => false,
+
+        'publicly_queryable' => true,
+
+        'exclude_from_search' => false,
+
+        'has_archive' => true,
+
+        'query_var' => true,
+
+        'can_export' => true,
+
+        'rewrite' => true,
+
+        'capability_type' => 'post'
+
+    );
+
+
+
+    register_post_type( 'webninjaz_product', $args );
+
+}
+
+add_action( 'init', 'create_webninjaz_product_cpt' );
+
+
+
+
+
+// product type taxonomy - for the webninjaz_product cpt 
+
+function create_webninjaz_product_taxonomy() {
+
+    $labels = array(
+
+        'name' => _x( 'Product Types', 'product_type' ),
+
+        'singular_name' => _x( 'Product Type', 'product_type' ),
+
+        'search_items' => _x( 'Search Product Types', 'product_type' ),
+
+        'all_items' => _x( 'All Product Types', 'product_type' ),
+
+        'parent_item' => _x( 'Parent Product Type', 'product_type' ),
+
+        'parent_item_colon' => _x( 'Parent Product Type:', 'product_type' ),
+
+        'edit_item' => _x( 'Edit Product Type', 'product_type' ),
+
+        'update_item' => _x( 'Update Product Type', 'product_type' ),
+
+        'add_new_item' => _x( 'Add New Product Type', 'product_type' ),
+
+        'new_item_name' => _x( 'New Product Type Name', 'product_type' ),
+
+        'menu_name' => _x( 'Product Types', 'product_type' ),
+
+    );
+
+
+
+    $args = array(
+
+        'hierarchical' => true,
+
+        'labels' => $labels,
+
+        'show_ui' => true,
+
+        'show_admin_column' => true,
+
+        'query_var' => true,
+
+        'rewrite' => array( 'slug' => 'product-type' ),
+
+    );
+
+
+
+    register_taxonomy( 'product_type', array( 'webninjaz_product' ), $args );
+
+}
+
+add_action( 'init', 'create_webninjaz_product_taxonomy' );
+
+ 
+
+function child_theme_remove_parent_gsap() {
+  if (is_page('listing')) {
+      wp_dequeue_script('gsap-js');       // The ID from the parent theme
+      wp_deregister_script('gsap-js');
+  }
+}
+add_action('wp_enqueue_scripts', 'child_theme_remove_parent_gsap', 100);
+
+// disable imagify on wn-products
+add_filter('imagify_allow_webp', function ($allow_webp) {
+  if (is_page('products')) {
+      return false;  
+  }
+  return $allow_webp;
+});
+add_filter( 'imagify_picture_tag_enabled', 'disable_imagify_picture_on_wn_products' );
+
+function disable_imagify_picture_on_wn_products( $enabled ) {
+  if ( is_page( 'products' ) || get_page_template_slug() === 'page_product.php' ) {
+      return false;  
+  }
+  return $enabled;
+}
