@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap');
+
+
+
+.saga-common div,
+.saga-common-color div{
+  position: relative;
+  font-family: 'Sora';
+  /* color: #FFF; */
+  font-size: 140px;
+  font-weight: 400;
+  letter-spacing: -2.8px;
+  display: inline-block;
+}
+.saga-common span,
+.saga-common-color span{
+  position: absolute;
+  width: 0;
+  height: 100%;
+  color: #fff;
+  left: 0;
+  overflow:hidden;
+  text-align: center;
+}
+.saga-common-color span,
+.scc-mob span{
+  background: linear-gradient(90deg, #8BD5FF 0%, #288BFF 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.saga-common-color{
+  font-family: 'Sora';
+    font-size: 140px;
+    font-weight: 400;
+    letter-spacing: -2.8px;
+/*     padding-left: 200px; */
+    line-height: 150px;
+/*     padding-bottom: 140px; */
+}
+.saga-cbg{
+	    padding-left: 200px;
+    line-height: 150px;
+    padding-bottom: 140px;
+}
+.saga-common-heading-bg{
+  padding-top: 100px;
+}
+ .saga-common p{
+  color: #DDD;
+  font-family: 'Sora';
+  font-size: 16px;
+  font-weight: 400;
+  max-width: 607px;
+  margin-bottom: -34px;
+ }
+ .saga-common{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+ }
+
+ .about-saga-bg{
+  display: none;
+}
+
+
+ @media(max-width:1440px){
+    .saga-common div, .saga-common-color div {
+      font-size: 110px;
+    }
+    .about-saga h2 {
+      font-size: 110px;
+    }
+    .about-color-saga h2, .about-color-saga-mob h2 {
+      font-size: 110px;
+    }
+	 
+}
+ @media(max-width:1200px){
+
+    .saga-common div, .saga-common-color div {
+      font-size: 80px;
+    }
+    .about-saga h2 {
+      font-size: 80px;
+  }
+  .about-color-saga h2, .about-color-saga-mob h2 {
+    font-size: 80px;
+}
+.saga-common p {
+  max-width: 407px;
+}
+.about-saga p {
+  max-width: 407px;
+}
+}
+/* css */
+
+.container{
+	max-width: 1600px !important;
+	margin: 0 auto;
+}
+.nipb-img img{
+	max-width: unset !important;
+}
+.as-pl p{
+    max-width: 450px;
+}
+.nipb-img h4{
+    color: #FFF;
+    font-family: 'Inter';
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: capitalize;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-top: 40px;
+	margin: 0 0 8px 0
+}
+
+.nipb-img a{
+  text-decoration: none;
+}
+
+.nipb-img h2{
+    color: #FFF;
+    font-family: 'Sora';
+    font-size: 50px;
+    font-weight: 400;
+    letter-spacing: -1px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+	margin: 0 0 8px 0;
+}
+.nipb-img h6{
+    color: #FFF;
+font-family: 'Inter';
+font-size: 20px;
+font-weight: 400;
+	margin: 0;
+}
+.nipb-img p{
+    color: #FFF;
+font-family: 'Inter';
+font-size: 16px;
+font-weight: 400;
+}
+
+.nipb-img img{
+    width: 100%;
+}
+
+
+
+/* .ninja-innovate-product {
+  display: flex;
+} */
+
+
+/* .ninja-innovate-product-bg {
+    overflow: hidden;
+  }
+  
+ 
+  .nipb-img {
+    position: relative;
+    transition: transform 0.5s ease; 
+  }
+  
+  .nipb-img:hover {
+    transform: scale(1.5); 
+  }
+  
+  .nipb-img:hover ~ .nipb-img {
+    transform: scale(0.5); 
+  } */
+  
+  .ninja-innovate-product {
+    display: flex;
+    justify-content: space-between;
+    height: 974px; /* Adjust the height as needed */
+    gap: 30px;
+}
+
+.nipb-ih-2,
+.nipb-ih-1 {
+    flex-grow: 1;
+}
+
+.nipb-ih-2 img {
+    width: 579px; /* Initial width */
+    transition: width 0.8s ease;
+    border-radius: 12px;
+}
+.nipb-ih-1 img{
+  border-radius: 12px;
+}
+
+.nipb-ih-2:hover img {
+    /* width: 835px; */
+    width: 1000px;
+}
+.ninja-innovate-product a{
+  text-decoration: none;
+}
+.ninja-innovate-product a{
+  text-decoration: none;
+}
+
+@media (max-width:1400px){
+  
+}
+
+
+@media (max-width:991px){
+  .nipb-ih-2 img {
+    width: 100%!important;
+}
+.ninja-innovate-product {
+  flex-direction: column;
+  height: 100%;
+}
+.blog-wd img:hover {
+  width: 100%!important;
+}
+}
+
+@media (max-width:767px){
+  .nipb-img h4 {
+    font-size: 14px;
+  }
+  .nipb-img h2 {
+    font-size: 32px!important;
+  }
+  .nipb-img h6,
+  .nipb-img p {
+    font-size: 15px;
+}
+.blog-wd img:hover {
+  width: 100%!important;
+}
+
+}

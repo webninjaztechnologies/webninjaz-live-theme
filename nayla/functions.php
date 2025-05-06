@@ -235,3 +235,28 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+// new function demo
+
+function child_theme_remove_parent_gsap() {
+    if (is_page('wn-listing')) {
+        wp_dequeue_script('gsap-js');       // The ID from the parent theme
+        wp_deregister_script('gsap-js');
+    }
+}
+add_action('wp_enqueue_scripts', 'child_theme_remove_parent_gsap', 100);
+
+// disable imagify on wn-products
+add_filter('imagify_allow_webp', function ($allow_webp) {
+    if (is_page('wn-products')) {
+        return false; // Disable WebP on this page
+    }
+    return $allow_webp;
+});
+add_filter( 'imagify_picture_tag_enabled', 'disable_imagify_picture_on_wn_products' );
+
+function disable_imagify_picture_on_wn_products( $enabled ) {
+    if ( is_page( 'wn-products' ) || get_page_template_slug() === 'page_product.php' ) {
+        return false; // ✅ disable <pictre> output
+    }
+    return $enabled;
+}
