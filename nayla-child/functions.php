@@ -78,6 +78,15 @@ function child_theme_enqueue_styles_scripts() {
 	wp_enqueue_style('parent-style', get_stylesheet_directory_uri() . '/css/product-listing.css');
 	     
 	 }
+   if (is_singular('webninjaz_product')) {
+    wp_enqueue_style('webninjaz-style', get_stylesheet_directory_uri() . '/css/product-listing.css');
+    wp_enqueue_style('style-n', get_stylesheet_directory_uri() . '/css/style-n.css');
+    wp_enqueue_style('style', get_stylesheet_directory_uri() . '/css/style.css');
+    wp_enqueue_style('bootstrap-css','https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css',array(),'4.6.2');
+
+    wp_enqueue_script ( 'my-script', get_stylesheet_directory_uri() . '/js/my-script.js' );
+    wp_enqueue_script ( 'script', get_stylesheet_directory_uri() . '/js/script.js' );
+}
 }
 add_action('wp_enqueue_scripts', 'child_theme_enqueue_styles_scripts');
 

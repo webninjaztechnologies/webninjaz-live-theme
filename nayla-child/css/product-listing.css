@@ -99,8 +99,33 @@
 /* css */
 
 .container{
-	max-width: 1600px !important;
+	max-width: 1500px !important;
 	margin: 0 auto;
+}
+@media(max-width: 1500px){
+	.container{
+		margin: 0 50px;
+	}
+}
+@media(max-width: 1024px){
+	.saga-cbg {
+    padding-left: 0;
+	}
+}
+@media(max-width:834px){
+	    .container {
+        margin: 0 90px;
+    }
+	.saga-common {
+    align-items: start;
+    flex-direction: column;
+	}
+}
+
+@media(max-width:767px){
+	  .container {
+        margin: 0 20px;
+    }
 }
 .nipb-img img{
 	max-width: unset !important;
@@ -209,11 +234,6 @@ font-weight: 400;
 .ninja-innovate-product a{
   text-decoration: none;
 }
-
-@media (max-width:1400px){
-  
-}
-
 
 @media (max-width:991px){
   .nipb-ih-2 img {
